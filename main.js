@@ -47,9 +47,11 @@ let addressElement = document.getElementById('address');
 let salaryElement = document.getElementById('salary');
 let dobElement = document.getElementById('dob');
 let saveUpdateButtonElement= document.getElementById('btnSaveCustomer');
-let tBody= document.getElementById('tBody');
+let tBodyElement= document.getElementById('tBody');
+let alertElement= document.getElementById('alert');
 //================================
 let customerDatabase=[]; //[1,2,3,4,5(id=C-5)]
+selectedCustomerId=undefined;
 //================================
 // save & update customer
 const saveUpdateCustomer=()=>{
@@ -77,12 +79,42 @@ const saveCustomer=(customer)=>{
     customerDatabase.push(customer);
     clearFields();
     loadTable();
+    setAlert(customer.getName()+' Saved!', 3000);
 }
 // Save Customer
+// set Alert
+const setAlert=(message, duration)=>{
+    alertElement.innerHTML=message;
+    alertElement.style.display='block';
+    setTimeout(()=>{
+        alertElement.style.display='none';
+    }, duration);
+}
+// set Alert
+// Set Data
+const setData=(selectedCustomer)=>{
+    selectedCustomerId=selectedCustomer.getId();
+    nameElement.value=selectedCustomer.getName();
+    addressElement.value=selectedCustomer.getAddress();
+    salaryElement.value=selectedCustomer.getSalary();
+    dobElement.value=selectedCustomer.getDob();
+    saveUpdateButtonElement.value='Update Customer';
+}
+// Set Data
+// Ready to Update
+const readyToUpdate=(customerId)=>{
+    let selectedCustomer = customerDatabase.find(e=>e.getId()==customerId);
+    if(!selectedCustomer){
+        alert('something went wrong!..');
+        return;
+    }
+    setData(selectedCustomer);
+}
+// Ready to Update
 
 // load table
 const loadTable = ()=>{
-
+    tBodyElement.innerHTML='';
     customerDatabase.forEach(e=>{
         let tr = document.createElement('tr');
         tr.innerHTML=`
@@ -113,7 +145,7 @@ const loadTable = ()=>{
             </td>
             <td>
                 <div class="context">
-                    <input type="button" value="Modify" class="btn btn-warning">
+                    <input type="button" onclick="readyToUpdate('${e.getId()}')" value="Modify" class="btn btn-warning">
                 </div>
             </td>
             <td>
@@ -122,7 +154,7 @@ const loadTable = ()=>{
                 </div>
             </td>
         `;
-        tBody.appendChild(tr);
+        tBodyElement.appendChild(tr);
     });
 }
 // load table
