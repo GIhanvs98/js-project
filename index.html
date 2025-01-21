@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 inner">
                     <label for="salary" class="form-label">Customer Salary</label>
-                    <input type="text" class="form-control" required id="salary" placeholder="25000">
+                    <input type="number" class="form-control" required id="salary" placeholder="25000">
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 inner">
                     <label for="dob" class="form-label">Date of Birth</label>
@@ -34,10 +34,14 @@
                 </div>
                 <div class="col-12">
                     <br>
-                    <p class="alert alert-primary"></p>
+                    <p class="alert alert-primary" id="alert"></p>
                 </div>
                 <div class="col-12">
-                    <input type="button" value="Save Customer" class="btn btn-primary col-12">
+                    <input type="submit"
+                     value="Save Customer"
+                     class="btn btn-primary col-12"
+                     onclick="saveUpdateCustomer()"
+                     id="btnSaveCustomer">
                     <hr>
                 </div>
                 <div class="col-12">
@@ -53,44 +57,8 @@
                                 <th>Remove</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="context">
-                                        #c-1
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="context">
-                                        Kamal
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="context">
-                                        Colombo
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="context">
-                                        25000
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="context">
-                                        1995-10-16 | 30
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="context">
-                                        <input type="button" value="Modify" class="btn btn-warning">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="context">
-                                        <input type="button" value="Remove" class="btn btn-danger">
-                                    </div>
-                                </td>
-                            </tr>
+                        <tbody id="tBody">
+                            
                         </tbody>
                     </table>
                 </div>
