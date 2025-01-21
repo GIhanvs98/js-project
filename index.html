@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<form>
+    <div class="main-out">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Customer Management</h1>
+                    <hr>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 inner">
+                    <label for="name" class="form-label">Customer name</label>
+                    <input type="text" class="form-control" required id="name" placeholder="kamal">
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 inner">
+                    <label for="address" class="form-label">Customer Address</label>
+                    <input type="text" class="form-control" required id="address" placeholder="Colombo">
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 inner">
+                    <label for="salary" class="form-label">Customer Salary</label>
+                    <input type="text" class="form-control" required id="salary" placeholder="25000">
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 inner">
+                    <label for="dob" class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" required id="dob">
+                </div>
+                <div class="col-12">
+                    <br>
+                    <p class="alert alert-primary"></p>
+                </div>
+                <div class="col-12">
+                    <input type="button" value="Save Customer" class="btn btn-primary col-12">
+                    <hr>
+                </div>
+                <div class="col-12">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#Id</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Salary</th>
+                                <th>Dob | (age)</th>
+                                <th>Modify</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="context">
+                                        #c-1
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="context">
+                                        Kamal
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="context">
+                                        Colombo
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="context">
+                                        25000
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="context">
+                                        1995-10-16 | 30
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="context">
+                                        <input type="button" value="Modify" class="btn btn-warning">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="context">
+                                        <input type="button" value="Remove" class="btn btn-danger">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    
+    <script src="main.js"></script>
+</body>
+</html>

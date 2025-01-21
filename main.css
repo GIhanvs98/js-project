@@ -1,0 +1,8 @@
+.main-out{
+    padding: 20px 12px;
+}
+.context{
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
