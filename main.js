@@ -53,19 +53,38 @@ let customerDatabase=[]; //[1,2,3,4,5(id=C-5)]
 // save & update customer
 const saveUpdateCustomer=()=>{
     if(saveUpdateButtonElement.value=='Save Customer'){
+        let selectedId= generateId();
+        if(!selectedId){
+            alert('contact it department');
+            return;
+        }
         let createdCustomer = new Customer(
-            '',
+            selectedId,
             nameElement.value,
             addressElement.value,
             Number.parseFloat(salaryElement.value),
             dobElement.value
         );
+        saveCustomer(createdCustomer);
     }else{
         // update customer
     }
 }
 // save & update customer
-
+// Save Customer
+const saveCustomer=(customer)=>{
+    customerDatabase.push(customer);
+    clearFields();
+}
+// Save Customer
+//clear Fields
+const clearFields=()=>{
+    nameElement.value='';
+    addressElement.value='';
+    salaryElement.value='';
+    dobElement.value='';
+}
+//clear Fields
 // generate Id (id format = [C-1])
 const generateId=()=>{
     if(customerDatabase.length==0){
