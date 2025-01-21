@@ -69,8 +69,24 @@ const saveUpdateCustomer=()=>{
             dobElement.value
         );
         saveCustomer(createdCustomer);
-    }else{
-        // update customer
+    }else if(saveUpdateButtonElement.value=='Update Customer' && selectedCustomerId){
+        let selectedIndex = findCustomerIndex(selectedCustomerId);
+            if(selectedIndex!=-1){
+                customerDatabase[selectedIndex]= new Customer(
+                    selectedCustomerId,
+                    nameElement.value,
+                    addressElement.value,
+                    Number.parseFloat(salaryElement.value),
+                    dobElement.value,
+                );
+                setAlert(nameElement.value+' updated!..',3000);
+                saveUpdateButtonElement.value='Save Customer';
+                loadTable();
+                clearFields();
+
+            }else{
+                alert('Something went wrong');
+            }
     }
 }
 // save & update customer
@@ -101,14 +117,31 @@ const setData=(selectedCustomer)=>{
     saveUpdateButtonElement.value='Update Customer';
 }
 // Set Data
+// find customer
+const findCustomer=(id)=>{
+    let selectedCustomer = customerDatabase.find(e=>e.getId()==id);
+    if(!selectedCustomer){
+        return null;
+    }
+    return selectedCustomer;
+}
+// find customer
+
+// find customer Index
+const findCustomerIndex=(id)=>{
+    return customerDatabase.findIndex(e=>e.getId()==id);
+}
+// find customer Index
+
 // Ready to Update
 const readyToUpdate=(customerId)=>{
-    let selectedCustomer = customerDatabase.find(e=>e.getId()==customerId);
-    if(!selectedCustomer){
-        alert('something went wrong!..');
-        return;
+    let selectedCustomer = findCustomer(customerId);
+    if(selectedCustomer){
+        setData(selectedCustomer);
+    }else{
+        alert('Something went wrong');
     }
-    setData(selectedCustomer);
+    
 }
 // Ready to Update
 
