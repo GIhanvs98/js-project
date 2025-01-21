@@ -47,6 +47,7 @@ let addressElement = document.getElementById('address');
 let salaryElement = document.getElementById('salary');
 let dobElement = document.getElementById('dob');
 let saveUpdateButtonElement= document.getElementById('btnSaveCustomer');
+let tBody= document.getElementById('tBody');
 //================================
 let customerDatabase=[]; //[1,2,3,4,5(id=C-5)]
 //================================
@@ -75,8 +76,57 @@ const saveUpdateCustomer=()=>{
 const saveCustomer=(customer)=>{
     customerDatabase.push(customer);
     clearFields();
+    loadTable();
 }
 // Save Customer
+
+// load table
+const loadTable = ()=>{
+
+    customerDatabase.forEach(e=>{
+        let tr = document.createElement('tr');
+        tr.innerHTML=`
+             <td>
+                <div class="context">
+                    ${e.getId()}
+                </div>
+            </td>
+            <td>
+                <div class="context">
+                    ${e.getName()}
+                </div>
+            </td>
+            <td>
+                <div class="context">
+                    ${e.getAddress()}
+                </div>
+            </td>
+            <td>
+                <div class="context">
+                    ${e.getSalary()}
+                </div>
+            </td>
+            <td>
+                <div class="context">
+                    ${e.getDob()}
+                </div>
+            </td>
+            <td>
+                <div class="context">
+                    <input type="button" value="Modify" class="btn btn-warning">
+                </div>
+            </td>
+            <td>
+                <div class="context">
+                    <input type="button" value="Remove" class="btn btn-danger">
+                </div>
+            </td>
+        `;
+        tBody.appendChild(tr);
+    });
+}
+// load table
+
 //clear Fields
 const clearFields=()=>{
     nameElement.value='';
@@ -85,6 +135,7 @@ const clearFields=()=>{
     dobElement.value='';
 }
 //clear Fields
+
 // generate Id (id format = [C-1])
 const generateId=()=>{
     if(customerDatabase.length==0){
