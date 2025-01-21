@@ -48,12 +48,36 @@ let salaryElement = document.getElementById('salary');
 let dobElement = document.getElementById('dob');
 let saveUpdateButtonElement= document.getElementById('btnSaveCustomer');
 //================================
+let customerDatabase=[]; //[1,2,3,4,5(id=C-5)]
+//================================
 // save & update customer
 const saveUpdateCustomer=()=>{
     if(saveUpdateButtonElement.value=='Save Customer'){
-        // save Customer
+        let createdCustomer = new Customer(
+            '',
+            nameElement.value,
+            addressElement.value,
+            Number.parseFloat(salaryElement.value),
+            dobElement.value
+        );
     }else{
         // update customer
     }
 }
 // save & update customer
+
+// generate Id (id format = [C-1])
+const generateId=()=>{
+    if(customerDatabase.length==0){
+        return 'C-1';
+    }
+    let selectedCustomer = customerDatabase[customerDatabase.length-1];
+    if(!selectedCustomer.getId()){
+        return null;
+    }
+    // C-5 -> [c,5] -> 5
+    let selectedId = parseInt(selectedCustomer.getId().split('-')[1]);
+    selectedId++;
+    return 'C-'+selectedId;
+}
+// generate Id
