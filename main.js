@@ -144,6 +144,20 @@ const readyToUpdate=(customerId)=>{
     
 }
 // Ready to Update
+// Delete
+const deleteCustomer = (customerId)=>{
+    if(confirm('Are you sure whether do you want to delete this customer?')){
+        let selecteIndex = findCustomerIndex(customerId);
+    if(selecteIndex!=-1){
+        customerDatabase.splice(selecteIndex, 1);
+        setAlert(`Customer Deleted : [${customerId}]`, 3000);
+        loadTable();
+    }else{
+        alert('Something went wrong');
+    }
+    }
+}
+// Delete
 
 // load table
 const loadTable = ()=>{
@@ -183,7 +197,7 @@ const loadTable = ()=>{
             </td>
             <td>
                 <div class="context">
-                    <input type="button" value="Remove" class="btn btn-danger">
+                    <input type="button" onclick="deleteCustomer('${e.getId()}')" value="Remove" class="btn btn-danger">
                 </div>
             </td>
         `;
